@@ -1,0 +1,70 @@
+{
+  "name": "cli-project",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^4.4.6",
+    "@angular/compiler": "^4.4.6",
+    "@angular/core": "^4.4.6",
+    "@angular/forms": "^4.4.6",
+    "@angular/http": "^4.4.6",
+    "@angular/platform-browser": "^4.4.6",
+    "@angular/platform-browser-dynamic": "^4.4.6",
+    "@angular/router": "^4.4.6",
+    "@types/numeral": "0.0.22",
+    "angular2-image-upload": "^0.6.6",
+    "bootstrap": "^3.3.7",
+    "chart.js": "^2.7.1",
+    "classlist.js": "^1.1.20150312",
+    "core-js": "^2.5.3",
+    "cryptocurrencies": "^1.1.1",
+    "install": "^0.10.2",
+    "ng2-bootstrap": "^1.6.3",
+    "ng2-charts": "^1.6.0",
+    "ng2-smart-table": "^1.2.2",
+    "npm": "^5.6.0",
+    "numeral": "^2.0.6",
+    "rxjs": "^5.5.6",
+    "web-animations-js": "^2.3.1",
+    "zone.js": "^0.8.18"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.1",
+    "@angular/compiler-cli": "^4.4.6",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "^6.0.95",
+    "codelyzer": "~2.0.0",
+    "jasmine-core": "~2.5.2",
+    "jasmine-spec-reporter": "~3.2.0",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.1.0",
+    "ts-node": "~2.0.0",
+    "tslint": "~4.5.0",
+    "typescript": "~2.2.0"
+  },
+  "description": "Single Page App that powers http://www.cryptorollcall.com",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shankarganesh1234/CryptoRollCall.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/shankarganesh1234/CryptoRollCall/issues"
+  },
+  "homepage": "https://github.com/shankarganesh1234/CryptoRollCall#readme"
+}

@@ -1,0 +1,11 @@
+{
+  "/crcserver/*": {
+    "target": "http://localhost:8080/CryptoRollCallService/",
+    "pathRewrite": {
+      "^/crcserver/": ""
+    },
+    "changeOrigin": true,
+    "secure": true,
+    "logLevel": "debug"
+  }
+}
