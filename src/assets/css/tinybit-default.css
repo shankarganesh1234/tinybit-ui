@@ -1,0 +1,76 @@
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.inline-headers h1, .inline-headers h2, .inline-headers h3, .inline-headers h4 {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.tinybit-heading-color {
+    color: #fd5c63;
+}
+.tinybit-btn-bg {
+    background: #fd5c63;
+}
+.text-dark {
+    color: #35404f;
+}
+
+.text-gray {
+    color: #878c94;
+}
+
+.text-light {
+    color: #e5e5e5;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.text-success {
+    color: #5ed35e;
+}
+
+.text-info {
+    color: #64d5f6;
+}
+
+.text-warning {
+    color: #fcbe66;
+}
+
+.text-danger {
+    color: #e55e5a;
+}
+.text-purple {
+    color: #B10DC9;
+}
+#rotating-content:before {
+    color: #B10DC9;
+    content: 'for many addresses';
+    animation: animate infinite 30s;
+}
+
+@keyframes animate {
+    20% {
+        content: 'to share on any platform';
+    }
+    40% {
+        content: 'to embed anywhere';
+    }
+    60% {
+        content: 'used as a donation link';
+    }
+    80% {
+        content: 'to remember your crypto investments';
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}

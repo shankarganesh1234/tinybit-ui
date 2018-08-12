@@ -4,12 +4,12 @@ import {CryptoService} from "../services/crypto.service";
 
 declare const $:any;
 @Component({
-    selector: 'crypto-footer',
-    templateUrl: `./crypto-footer.component.html`
+    selector: 'tinybit-home',
+    templateUrl: `./tinybit-home.component.html`
 })
 
 
-export class CryptoFooterComponent implements OnInit{
+export class TinybitHomeComponent implements OnInit{
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService){
         route.params.subscribe(val => {
