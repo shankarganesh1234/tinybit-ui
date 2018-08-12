@@ -5,10 +5,11 @@ import "rxjs/add/operator/toPromise";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import {Counter} from "../models/counter";
 
 
 @Injectable()
-export class CurrencyService {
+export class CoreService {
 
     private headers: Headers;
     private options: RequestOptions;
@@ -21,9 +22,21 @@ export class CurrencyService {
         this.options = new RequestOptions({headers: this.headers});
     }
 
+    /**
+     * Get the current number of requests served count
+     * @returns {Observable<Counter>}
+     */
+    getCount(): Observable<Counter> {
+        let baseUrl = "tinybitserver/counter";
+        return this.http
+            .get(baseUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
-
+        return body || {};
     }
 
     private handleError(error: any) {

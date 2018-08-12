@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CryptoService} from "../services/crypto.service";
+import {CoreService} from "../services/core.service";
+import {Counter} from "../models/counter";
 
 declare const $:any;
 @Component({
@@ -11,15 +12,33 @@ declare const $:any;
 
 export class TinybitHomeComponent implements OnInit{
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService){
+    counter: number = 0;
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService){
         route.params.subscribe(val => {
-
+            this.getCount();
         });
     }
 
     ngOnInit(): void {
-        //this.invokeCryptoService();
+        this.getCount();
     }
 
+    /**
+     *
+     */
+    getCount(): void {
+
+        this.coreService.getCount().subscribe(
+            result => this.extractCounter(result),
+        );
+    }
+
+    /**
+     *
+     * @param {Counter} counter
+     */
+    extractCounter(counter: Counter): void {
+        this.counter = counter.currentCount;
+    }
 }
 

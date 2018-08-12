@@ -5,7 +5,7 @@ import "rxjs/add/operator/toPromise";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {CryptoPrice} from "../models/crypto-price";
+import {Counter} from "../models/counter";
 
 
 @Injectable()
@@ -22,6 +22,8 @@ export class CryptoService {
         });
         this.options = new RequestOptions({headers: this.headers});
     }
+
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};

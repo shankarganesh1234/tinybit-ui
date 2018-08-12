@@ -1,8 +1,8 @@
 {
-  "/crcserver/*": {
-    "target": "http://localhost:8080/CryptoRollCallService/",
+  "/tinybitserver/*": {
+    "target": "http://localhost:8080/tinybit/",
     "pathRewrite": {
-      "^/crcserver/": ""
+      "^/tinybitserver/": ""
     },
     "changeOrigin": true,
     "secure": true,
