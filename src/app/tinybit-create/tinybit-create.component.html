@@ -1,0 +1,52 @@
+<br/><br/>
+<div class="container" id="welcomeMessage">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label for="tinybit-name">Name</label>
+                <input type="text" class="form-control" [(ngModel)]="detail.name" value="{{detail.name}}" id="tinybit-name" aria-describedby="emailHelp"
+                       placeholder="My personal crypto addresses">
+                <small id="emailHelp" class="form-text text-muted">You can enter any name, to help identify that
+                    this url belongs to you
+                </small>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngFor="let item of coinDetails;let j=index">
+        <div class="row">
+
+            <div class="col-md-2">
+                <select class="form-control" [(ngModel)]="item.symbol" (ngModelChange)="coinChanged($event, j)">
+                    <option *ngFor="let x of ccDetails" [value]="x.symbol" [selected]="item.symbol == x.symbol">
+                        {{x.symbol}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" maxlength="20" aria-describedby="aliasHelp" placeholder="Alias" [(ngModel)]="item.alias" value="{{item.alias}}">
+            </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control" maxlength="50" aria-describedby="walletAddressHelp" placeholder="Wallet address" [(ngModel)]="item.walletAddress" value="{{item.walletAddress}}">
+            </div>
+            <div class="col-md-2">
+                <a (click)="deleteRow(j)" href="javascript:void(0)" class="tinybit-heading-color">Delete this row</a>
+            </div>
+        </div>
+        <br/>
+    </ng-container>
+    <a (click)="addRow()" href="javascript:void(0)" class="text-purple">Add a row</a>
+    <div class="row">
+        <div class="col-md-12">
+            <small class="text-muted">
+                {{errorMsg}}
+            </small>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-danger tinybit-btn-bg" type="submit" (click)="createUrl()">Create tiny url</button>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,9 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {Counter} from "../models/counter";
+import {CCDetails} from "../models/cc-details";
+import {CCDetail} from "../models/cc-detail";
+import {Detail} from "../models/detail";
 
 
 @Injectable()
@@ -33,6 +36,44 @@ export class CoreService {
             .map(this.extractData)
             .catch(this.handleError);
     }
+
+    /**
+     * get currencies for populating list
+     * @returns {Observable<CCDetails>}
+     */
+    getCurrencies(): Observable<CCDetail[]> {
+        let baseUrl = "tinybitserver/cc";
+        return this.http
+            .get(baseUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     * @returns {Observable<Detail>}
+     */
+    createUrl(detail: Detail): Observable<Detail> {
+        let baseUrl = "tinybitserver/";
+        return this.http
+            .post(baseUrl, detail)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     * @param {String} key
+     * @returns {Observable<Detail>}
+     */
+    getUrl(key: String): Observable<Detail> {
+        let baseUrl = "tinybitserver/key/" + key;
+        return this.http
+            .get(baseUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
 
     private extractData(res: Response) {
         let body = res.json();

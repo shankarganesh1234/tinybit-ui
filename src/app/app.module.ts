@@ -7,13 +7,16 @@ import {AppRoutingModule} from "./app-routing.module";
 import {TinybitHomeComponent} from "./tinybit-home/tinybit-home.component";
 import {TinybitFooterComponent} from "./tinybit-footer/tinybit-footer.component";
 import {CoreService} from "./services/core.service";
-import {CryptoService} from "./services/crypto.service";
+import {TinybitCreateComponent} from "./tinybit-create/tinybit-create.component";
+import {TinybitGetComponent} from "./tinybit-get/tinybit-get.component";
 
 @NgModule({
   declarations: [
       AppComponent,
       TinybitHomeComponent,
-      TinybitFooterComponent
+      TinybitFooterComponent,
+      TinybitCreateComponent,
+      TinybitGetComponent
   ],
   imports: [BrowserModule,
     FormsModule,
@@ -22,7 +25,7 @@ import {CryptoService} from "./services/crypto.service";
     JsonpModule,
     ReactiveFormsModule
   ],
-  providers: [CoreService, CryptoService],
+  providers: [CoreService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })
