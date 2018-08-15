@@ -2,29 +2,40 @@
 <div class="container" id="welcomeMessage">
     <div class="row">
         <div class="col-md-6">
-                <h1 class="tinybit-heading-color">{{detail.name}}</h1>
-            </div>
+            <h1 class="tinybit-heading-color">{{detail.name}}</h1>
+        </div>
     </div>
 
-    <ng-container *ngFor="let item of detail.coinDetails;let j=index">
-        <div class="row">
+    <div *ngIf="detail" class="container table-responsive">
+        <table class="table table-sm table-responsive">
+            <thead>
+            <th scope="col" class="image-container-width"></th>
+            <th scope="col" class="coin-container-width"><b>Coin</b></th>
+            <th scope="col" class="alias-container-width">Alias</th>
+            <th scope="col" class="address-container-width">Address</th>
+            </thead>
+            <tbody>
+            <ng-container *ngFor="let item of detail.coinDetails;let j=index">
+                <tr>
+                    <td scope="col">
+                        <img class="img-fluid img-rounded" src="{{item.imageUrl}}"/>
+                    </td>
+                    <td class="align-middle">
+                        {{item.name}}
+                        <small>({{item.symbol}})</small>
+                    </td>
+                    <td class="align-middle">
+                        {{item.alias}}
+                    </td>
+                    <td class="align-middle">
+                        <span id="address_{{j}}">{{item.walletAddress}} </span>
+                        <button id="testButton" (click)="testThis()">Test</button>
+                    </td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
 
-            <div class="col-md-1">
-                <img src="{{item.imageUrl}}" class="img-fluid">
-            </div>
-            <div class="col-md-2">
-                {{item.name}}
-            </div>
-            <div class="col-md-1">
-                {{item.symbol}}
-            </div>
-            <div class="col-md-3">
-                {{item.alias}}
-            </div>
-            <div class="col-md-5">
-                {{item.walletAddress}}
-            </div>
-        </div>
-        <br/>
-    </ng-container>
+    </div>
+    <input type="text" value="This is a test" id="sharableLink"/>
 </div>

@@ -74,3 +74,16 @@
     height: 60px;
     line-height: 60px;
 }
+
+.image-container-width {
+    width: 8%;
+}
+.coin-container-width {
+    width: 15%;
+}
+.alias-container-width {
+    width: 25%
+}
+.address-container-width {
+    width: 52%;
+}

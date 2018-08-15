@@ -10,11 +10,10 @@ declare const $: any;
     templateUrl: `./tinybit-get.component.html`
 })
 
-
 export class TinybitGetComponent implements OnInit {
 
     key: String;
-    detail: Detail;
+    detail: Detail = new Detail();
 
     constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService) {
 
@@ -41,5 +40,11 @@ export class TinybitGetComponent implements OnInit {
         this.detail = detail;
     }
 
+    testThis(): void {
+        let el = document.getElementById('sharableLink') as HTMLInputElement;
+        el.select();
+        document.execCommand('copy');
+    }
 }
+
 

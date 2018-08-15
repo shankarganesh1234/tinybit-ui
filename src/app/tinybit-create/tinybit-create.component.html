@@ -27,7 +27,7 @@
                 <input type="text" class="form-control" maxlength="20" aria-describedby="aliasHelp" placeholder="Alias" [(ngModel)]="item.alias" value="{{item.alias}}">
             </div>
             <div class="col-md-5">
-                <input type="text" class="form-control" maxlength="50" aria-describedby="walletAddressHelp" placeholder="Wallet address" [(ngModel)]="item.walletAddress" value="{{item.walletAddress}}">
+                <input type="text" class="form-control" maxlength="100" aria-describedby="walletAddressHelp" placeholder="Wallet address" [(ngModel)]="item.walletAddress" value="{{item.walletAddress}}">
             </div>
             <div class="col-md-2">
                 <a (click)="deleteRow(j)" href="javascript:void(0)" class="tinybit-heading-color">Delete this row</a>
