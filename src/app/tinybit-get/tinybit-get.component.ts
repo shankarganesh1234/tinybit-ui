@@ -14,6 +14,7 @@ export class TinybitGetComponent implements OnInit {
 
     key: String;
     detail: Detail = new Detail();
+    error: boolean = false;
 
     constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService) {
 
@@ -33,6 +34,7 @@ export class TinybitGetComponent implements OnInit {
 
         this.coreService.getUrl(this.key).subscribe(
             result => this.extractCreateUrl(result),
+            error => this.extractError(error)
         );
     }
 
@@ -40,8 +42,17 @@ export class TinybitGetComponent implements OnInit {
         this.detail = detail;
     }
 
-    testThis(): void {
-        let el = document.getElementById('sharableLink') as HTMLInputElement;
+    extractError(error: any): void {
+        this.error = true;
+    }
+
+    /**
+     *
+     * @param id
+     */
+    copyToCLipboard(id): void {
+
+        let el = document.getElementById(id) as HTMLInputElement;
         el.select();
         document.execCommand('copy');
     }

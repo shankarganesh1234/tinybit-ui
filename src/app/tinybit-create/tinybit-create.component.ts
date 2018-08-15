@@ -16,7 +16,7 @@ declare const $:any;
 export class TinybitCreateComponent implements OnInit{
 
     detail: Detail = new Detail();
-    errorMsg: string;
+    errorMsg: string = '';
     coinDetails: CoinDetail[] = [];
     ccDetails: CCDetail[];
     maxNumberOfAddresses: number = 5;
@@ -28,8 +28,10 @@ export class TinybitCreateComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        // reset errors
         this.errorMsg = '';
         this.init();
+        $('[data-toggle="tooltip"]').tooltip();
     }
 
     /**
@@ -55,6 +57,9 @@ export class TinybitCreateComponent implements OnInit{
      */
     addRow(): void {
 
+        // reset errors
+        this.errorMsg = '';
+
         if(this.coinDetails.length >= this.maxNumberOfAddresses) {
             this.errorMsg = 'Sorry. The maximum number of addresses that can be saved are 5';
             return;
@@ -72,6 +77,7 @@ export class TinybitCreateComponent implements OnInit{
      * @param {number} index
      */
     deleteRow(index: number): void {
+        // reset errors
         this.errorMsg = '';
         this.coinDetails.splice(index, 1);
     }
@@ -82,6 +88,8 @@ export class TinybitCreateComponent implements OnInit{
      * @param {number} index
      */
     coinChanged(symbol: string, index: number): void {
+        // reset errors
+        this.errorMsg = '';
 
         if(symbol == null) {
             this.errorMsg = 'Sorry. The selected coin cannot be saved';
@@ -128,6 +136,9 @@ export class TinybitCreateComponent implements OnInit{
      */
     validate(): boolean {
 
+        // reset errors
+        this.errorMsg = '';
+
         if(this.detail == null || this.detail.name === '') {
             this.errorMsg = 'Please add a name';
             return false;
@@ -143,11 +154,11 @@ export class TinybitCreateComponent implements OnInit{
             return false;
         }
 
-        this.coinDetails.forEach(function(e, i) {
+        this.coinDetails.forEach((e) => {
 
             if(e == null || e.name == null || e.name === '' || e.symbol == null || e.symbol === '' || e.walletAddress == null
             || e.walletAddress === '') {
-                this.errorMsg = 'The ' + i + ' record could not be processed due to an error';
+                this.errorMsg = 'Please complete all the details';
                 return false;
             }
 
@@ -157,7 +168,10 @@ export class TinybitCreateComponent implements OnInit{
             }
         });
 
-        return true;
+        if(this.errorMsg === '')
+            return true;
+        else
+            return false;
     }
 }
 

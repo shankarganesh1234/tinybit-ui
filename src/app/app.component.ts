@@ -8,7 +8,15 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'app works!';
+  search: string = '';
   constructor(private router: Router){
 
+  }
+
+    /**
+     *
+     */
+  navigate(searchStr: string): void {
+        this.router.navigate([searchStr]);
   }
 }

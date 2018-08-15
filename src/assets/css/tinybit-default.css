@@ -76,14 +76,26 @@
 }
 
 .image-container-width {
-    width: 8%;
+    width: 4%;
 }
 .coin-container-width {
-    width: 15%;
+    width: 19%;
 }
 .alias-container-width {
     width: 25%
 }
 .address-container-width {
     width: 52%;
+}
+
+.form-control::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: darkgray;
+    opacity: 1; /* Firefox */
+}
+
+.bold {
+    font-weight: bold
+}
+.address-input-width {
+    width: 80% !important;
 }

@@ -1,7 +1,20 @@
 <br/><br/>
-<div class="container" id="welcomeMessage">
+
+<div *ngIf="error" class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1>
+            <i class="far fa-sad-tear fa-4x tinybit-heading-color"></i>
+        </h1>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1 class="tinybit-heading-color">
+           Whoops! I couldn't find what you requested.
+        </h1>
+    </div>
+</div>
+<div *ngIf="!error" class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h1 class="tinybit-heading-color">{{detail.name}}</h1>
         </div>
     </div>
@@ -17,7 +30,7 @@
             <tbody>
             <ng-container *ngFor="let item of detail.coinDetails;let j=index">
                 <tr>
-                    <td scope="col">
+                    <td>
                         <img class="img-fluid img-rounded" src="{{item.imageUrl}}"/>
                     </td>
                     <td class="align-middle">
@@ -27,9 +40,11 @@
                     <td class="align-middle">
                         {{item.alias}}
                     </td>
-                    <td class="align-middle">
-                        <span id="address_{{j}}">{{item.walletAddress}} </span>
-                        <button id="testButton" (click)="testThis()">Test</button>
+                    <td class="align-middle form-inline">
+                        <input type="text" class="form-control mb-2 address-input-width" readonly value="{{item.walletAddress}}" id="address_{{j}}"/>
+                        <button title="Copy to clipboard" class="btn" (click)="copyToCLipboard('address_' + j)">
+                            <i class="fas fa-copy text-purple"></i>
+                        </button>
                     </td>
                 </tr>
             </ng-container>
@@ -37,5 +52,4 @@
         </table>
 
     </div>
-    <input type="text" value="This is a test" id="sharableLink"/>
 </div>
