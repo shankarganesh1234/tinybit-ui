@@ -48,28 +48,25 @@
 }
 #rotating-content:before {
     color: #B10DC9;
-    content: 'for many addresses';
+    content: 'Many Addresses';
     animation: animate infinite 30s;
 }
 
 @keyframes animate {
-    20% {
-        content: 'to share on any platform';
-    }
-    40% {
-        content: 'to embed anywhere';
+    30% {
+        content: 'Easy to share';
     }
     60% {
-        content: 'used as a donation link';
+        content: 'Easy to embed';
     }
-    80% {
-        content: 'to remember your crypto investments';
+    90% {
+        content: 'Easy to recall';
     }
 }
 
 .footer {
     position: absolute;
-    bottom: -200px;
+    bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;

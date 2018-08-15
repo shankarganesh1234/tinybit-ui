@@ -9,13 +9,12 @@
     </div>
 
     <div class="row">
-
-        <div class="text-center col-md-12">
-            <h3><small class="text-gray" style="font-weight: bolder">One tiny url <span id="rotating-content"></span></small></h3>
+        <div class="col-md-12 text-center">
+            <h4 class="text-gray">One tiny url <span id="rotating-content" class="bold"></span></h4>
         </div>
     </div>
     <br/>
-    <br/>
+
 
     <div class="text-center row">
         <div class="col-md-12">
@@ -24,17 +23,18 @@
     </div>
 
     <br/>
-    <br/>
 
     <div class="row">
         <div class="col-md-4">
-
             <div class="card bg-light">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 tinybit-heading-color">Simple</h6>
-                    A minute or less to generate your own url
+                    <a [routerLink]="['/create']">
+                    Generate my URL in less than a minute
+                    </a>
                 </div>
             </div>
+
 
         </div>
 
@@ -43,7 +43,9 @@
             <div class="card bg-light">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 tinybit-heading-color">Free</h6>
+                    <a [routerLink]="['/create']">
                     No sign up or email required
+                    </a>
                 </div>
             </div>
 
@@ -54,13 +56,13 @@
             <div class="card bg-light">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 tinybit-heading-color">Immutable</h6>
-                    Create once, lives forever
+                    <a [routerLink]="['/create']">
+                    Create once, use forever
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <br/>
-
     <div class="jumbotron jumbotron-fluid bg-white text-center">
         <div class="container">
             <h1 class="display-4 text-purple">{{counter}}</h1>
