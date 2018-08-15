@@ -5,6 +5,7 @@ import {Counter} from "../models/counter";
 import {Detail} from "../models/detail";
 import {CoinDetail} from "../models/coin-detail";
 import {CCDetail} from "../models/cc-detail";
+import {Title} from "@angular/platform-browser";
 
 declare const $:any;
 @Component({
@@ -21,7 +22,7 @@ export class TinybitCreateComponent implements OnInit{
     ccDetails: CCDetail[];
     maxNumberOfAddresses: number = 5;
 
-    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService){
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title){
         route.params.subscribe(val => {
             //this.init();
         });
@@ -31,7 +32,7 @@ export class TinybitCreateComponent implements OnInit{
         // reset errors
         this.errorMsg = '';
         this.init();
-        $('[data-toggle="tooltip"]').tooltip();
+        this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
     }
 
     /**

@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CoreService} from "../services/core.service";
 import {Detail} from "../models/detail";
+import {Title} from "@angular/platform-browser";
+
 
 declare const $: any;
 
@@ -16,7 +18,7 @@ export class TinybitGetComponent implements OnInit {
     detail: Detail = new Detail();
     error: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService) {
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title) {
 
     }
 
@@ -25,6 +27,7 @@ export class TinybitGetComponent implements OnInit {
             this.key = val['key'];
             this.getUrl();
         });
+        this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
     }
 
     /**
