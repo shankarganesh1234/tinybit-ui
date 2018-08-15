@@ -6,8 +6,11 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="col-md-9">
+            &nbsp;
+        </div>
         <form class="form-inline my-2 my-lg-0">
-            <input [(ngModel)]="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchBox">
+            <input [(ngModel)]="search" class="form-control mr-sm-2" type="search" placeholder="Key eg.h4xw2x" aria-label="Search" name="searchBox">
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="navigate(search)">Search</button>
         </form>
     </div>
