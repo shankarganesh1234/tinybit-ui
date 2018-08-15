@@ -43,14 +43,6 @@ export class TinybitCreateComponent implements OnInit{
         this.coreService.getCurrencies().subscribe(
             result => this.extractCurrencies(result),
         );
-
-        // default row
-        let coinDetail1 = new CoinDetail();
-        coinDetail1.name = 'BTC';
-        coinDetail1.symbol = 'BTC';
-        coinDetail1.alias = '';
-        coinDetail1.walletAddress = '';
-        this.coinDetails.push(coinDetail1);
     }
 
     /**
@@ -71,6 +63,7 @@ export class TinybitCreateComponent implements OnInit{
         coinDetail1.symbol = 'BTC';
         coinDetail1.alias = '';
         this.coinDetails.push(coinDetail1);
+        this.coinChanged(coinDetail1.symbol,this.coinDetails.length - 1);
     }
 
     /**
@@ -124,7 +117,16 @@ export class TinybitCreateComponent implements OnInit{
      */
     extractCurrencies(ccDetails: CCDetail[], ): void {
         this.ccDetails = ccDetails;
-    }
+        // default row
+        let coinDetail1 = new CoinDetail();
+        coinDetail1.name = 'BTC';
+        coinDetail1.symbol = 'BTC';
+        coinDetail1.alias = '';
+        coinDetail1.walletAddress = '';
+        this.coinDetails.push(coinDetail1);
+
+        this.coinChanged('BTC',this.coinDetails.length - 1);
+        }
 
     extractCreateUrl(detail: Detail): void {
 
