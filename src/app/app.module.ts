@@ -9,6 +9,7 @@ import {TinybitFooterComponent} from "./tinybit-footer/tinybit-footer.component"
 import {CoreService} from "./services/core.service";
 import {TinybitCreateComponent} from "./tinybit-create/tinybit-create.component";
 import {TinybitGetComponent} from "./tinybit-get/tinybit-get.component";
+import {WebService} from "./services/web.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {TinybitGetComponent} from "./tinybit-get/tinybit-get.component";
     JsonpModule,
     ReactiveFormsModule
   ],
-  providers: [CoreService],
+  providers: [CoreService, WebService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })

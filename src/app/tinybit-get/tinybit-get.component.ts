@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CoreService} from "../services/core.service";
 import {Detail} from "../models/detail";
 import {Title} from "@angular/platform-browser";
+import {WebService} from "../services/web.service";
 
 
 declare const $: any;
@@ -18,7 +19,7 @@ export class TinybitGetComponent implements OnInit {
     detail: Detail = new Detail();
     error: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title) {
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private webService: WebService, private titleService: Title) {
 
     }
 
@@ -35,10 +36,11 @@ export class TinybitGetComponent implements OnInit {
      */
     getUrl(): void {
 
-        this.coreService.getUrl(this.key).subscribe(
-            result => this.extractCreateUrl(result),
-            error => this.extractError(error)
-        );
+        let detail: Detail;
+        this.webService.getEntry().then(result => {
+            console.log(result);
+            detail = result;
+        });
     }
 
     extractCreateUrl(detail: Detail): void {

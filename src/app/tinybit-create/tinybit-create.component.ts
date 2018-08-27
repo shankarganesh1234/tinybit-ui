@@ -6,6 +6,7 @@ import {Detail} from "../models/detail";
 import {CoinDetail} from "../models/coin-detail";
 import {CCDetail} from "../models/cc-detail";
 import {Title} from "@angular/platform-browser";
+import {WebService} from "../services/web.service";
 
 declare const $:any;
 @Component({
@@ -22,7 +23,7 @@ export class TinybitCreateComponent implements OnInit{
     ccDetails: CCDetail[];
     maxNumberOfAddresses: number = 5;
 
-    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title){
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title, private webService: WebService){
         route.params.subscribe(val => {
             //this.init();
         });
@@ -103,12 +104,15 @@ export class TinybitCreateComponent implements OnInit{
      */
     createUrl(): void {
 
-        if(this.validate()) {
-            this.detail.coinDetails = this.coinDetails;
-            this.coreService.createUrl(this.detail).subscribe(
-                result => this.extractCreateUrl(result),
-            );
-        }
+        console.log('started..');
+        this.webService.createEntry();
+        console.log('ended..');
+        // if(this.validate()) {
+        //     this.detail.coinDetails = this.coinDetails;
+        //     this.coreService.createUrl(this.detail).subscribe(
+        //         result => this.extractCreateUrl(result),
+        //     );
+        // }
     }
 
     /**
