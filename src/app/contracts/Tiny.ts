@@ -13,7 +13,7 @@ export class Tiny extends TC.TypeChainContract {
         constant: true,
         inputs: [{ name: "", type: "address" }],
         name: "keyValues",
-        outputs: [{ name: "", type: "bytes32" }],
+        outputs: [{ name: "", type: "string" }],
         payable: false,
         stateMutability: "view",
         type: "function"
@@ -35,7 +35,7 @@ export class Tiny extends TC.TypeChainContract {
       },
       {
         constant: false,
-        inputs: [{ name: "val", type: "bytes32" }],
+        inputs: [{ name: "val", type: "string" }],
         name: "addKv",
         outputs: [],
         payable: false,
@@ -46,7 +46,7 @@ export class Tiny extends TC.TypeChainContract {
         constant: true,
         inputs: [{ name: "lookupKey", type: "address" }],
         name: "getKv",
-        outputs: [{ name: "", type: "bytes32" }],
+        outputs: [{ name: "", type: "string" }],
         payable: false,
         stateMutability: "view",
         type: "function"

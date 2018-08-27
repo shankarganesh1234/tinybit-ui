@@ -19,7 +19,8 @@ export class WebService {
     private _networkVersion: string = null;
     private _apiVersion: string = null;
     private _web3: any;
-    private _tokenContractAddress: string = "0xa209e3ba21efa5f2f535b4c2705d4b1bcc67c046";
+    //private _tokenContractAddress: string = "0x4be27da0e3fca226bafa56c40bbd87df7b2214ae";
+    private _tokenContractAddress: string = "0x708Cb791668E08D1763AbE1010180e949C6D057A";
     private _tinyContract: Tiny = null;
 
     constructor() {
@@ -63,9 +64,7 @@ export class WebService {
         let contract: Tiny = await this.loadContract();
         let val = await contract.getKv(this._account);
         console.log(val);
-        let valStr = this._web3.toAscii(val);
-        console.log(valStr);
-        let detail : Detail = JSON.parse(valStr);
+        let detail : Detail = JSON.parse(val);
         return detail;
     }
 
