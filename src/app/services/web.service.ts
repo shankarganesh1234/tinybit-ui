@@ -51,8 +51,9 @@ export class WebService {
      *
      * @returns {Observable<Detail>}
      */
-    createEntry(): string {
-        let val = this._tinyContract.addKvTx("test value").send({from: this._account, gas: constants._standardGas});
+    createEntry(detail: Detail): string {
+        console.log(JSON.stringify(detail));
+        let val = this._tinyContract.addKvTx(JSON.stringify(detail)).send({from: this._account, gas: constants._standardGas});
         console.log(val);
         return "success";
     }
@@ -62,9 +63,9 @@ export class WebService {
         let contract: Tiny = await this.loadContract();
         let val = await contract.getKv(this._account);
         console.log(val);
-        console.log(this._web3.toAscii(val));
-        let test = '{"name": "test","company": "company name","key": "key"}';
-        let detail : Detail = JSON.parse(test);
+        let valStr = this._web3.toAscii(val);
+        console.log(valStr);
+        let detail : Detail = JSON.parse(valStr);
         return detail;
     }
 

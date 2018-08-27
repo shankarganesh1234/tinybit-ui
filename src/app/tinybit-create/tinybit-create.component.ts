@@ -105,14 +105,11 @@ export class TinybitCreateComponent implements OnInit{
     createUrl(): void {
 
         console.log('started..');
-        this.webService.createEntry();
+        if(this.validate()) {
+            this.detail.coinDetails = this.coinDetails;
+            this.webService.createEntry(this.detail);
+        }
         console.log('ended..');
-        // if(this.validate()) {
-        //     this.detail.coinDetails = this.coinDetails;
-        //     this.coreService.createUrl(this.detail).subscribe(
-        //         result => this.extractCreateUrl(result),
-        //     );
-        // }
     }
 
     /**
