@@ -4,59 +4,71 @@
 
         <div class="text-center col-md-12 inline-headers">
             <h1 class="tinybit-heading-color">Tinybit &nbsp;</h1>
-            <h2><small class="text-gray">Tiny url for all your wallets</small></h2>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h4 class="text-gray">One tiny url <span id="rotating-content" class="bold"></span></h4>
+            <h2>
+                <small class="text-gray">One url for all your wallets</small>
+            </h2>
         </div>
     </div>
     <br/>
-
-
     <div class="text-center row">
         <div class="col-md-12">
-            <button class="btn btn-lg btn-danger tinybit-btn-bg" type="submit" [routerLink]="['/create']">Get started</button>
+            <button class="btn btn-lg btn-danger tinybit-btn-bg" type="submit" [routerLink]="['/create']">Get
+                started
+            </button>
         </div>
     </div>
 
     <br/>
 
     <div class="row">
-        <div class="col-md-4">
-            <div class="card bg-light">
-                <div class="card-body">
-                    <h6 class="card-subtitle mb-2 tinybit-heading-color">Simple</h6>
-                    Generate my URL in less than a minute
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Simple</h5>
                 </div>
             </div>
 
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
-            <div class="card bg-light">
-                <div class="card-body">
-                    <h6 class="card-subtitle mb-2 tinybit-heading-color">Free</h6>
-                    No sign up or email required
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Anonymous</h5>
                 </div>
             </div>
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
-            <div class="card bg-light">
-                <div class="card-body">
-                    <h6 class="card-subtitle mb-2 tinybit-heading-color">Immutable</h6>
-                    Create once, use forever
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Decentralized</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Immutable</h5>
                 </div>
             </div>
         </div>
     </div>
+
+    <br/>
+
+    <div *ngIf="!isWeb3Supported" class="row">
+        <div class="col-md-12 text-danger text-center">
+            <h3>Please use a dapp browser like <a href="https://github.com/ethereum/mist" target="_blank">Mist</a> or <a href="https://metamask.io/" target="_blank">MetaMask</a> plugin for chrome</h3>
+        </div>
+    </div>
+
     <div class="jumbotron jumbotron-fluid bg-white text-center">
         <div class="container">
             <h1 class="display-4 text-purple">{{counter}}</h1>

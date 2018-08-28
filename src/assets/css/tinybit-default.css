@@ -46,23 +46,6 @@
 .text-purple {
     color: #B10DC9;
 }
-#rotating-content:before {
-    color: #B10DC9;
-    content: 'Many Addresses';
-    animation: animate infinite 30s;
-}
-
-@keyframes animate {
-    30% {
-        content: 'Easy to share';
-    }
-    60% {
-        content: 'Easy to embed';
-    }
-    90% {
-        content: 'Easy to recall';
-    }
-}
 
 .footer {
     position: absolute;

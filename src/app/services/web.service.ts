@@ -20,8 +20,9 @@ export class WebService {
     private _apiVersion: string = null;
     private _web3: any;
     //private _tokenContractAddress: string = "0x4be27da0e3fca226bafa56c40bbd87df7b2214ae";
-    private _tokenContractAddress: string = "0x708Cb791668E08D1763AbE1010180e949C6D057A";
+    private _tokenContractAddress: string = constants._contractAddress;
     private _tinyContract: Tiny = null;
+    private _isWeb3Supported: boolean = false;
 
     constructor() {
         this.init()
@@ -31,41 +32,68 @@ export class WebService {
      * Set the network version
      */
     private init(): void {
-        if (typeof window.web3 !== 'undefined') {
-            // Use Mist/MetaMask's provider
-            // @ts-ignore
-            this._web3 = new Web3(window.web3.currentProvider);
-            this.setNetworkVersion();
-            this.setApiVersion();
-            this.loadAccount();
-            this.loadContract();
-            //this._web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        try {
+            if (typeof window.web3 !== 'undefined') {
+                // Use Mist/MetaMask's provider
+                // @ts-ignore
+                this._web3 = new Web3(window.web3.currentProvider);
+                this.setNetworkVersion();
+                this.setApiVersion();
+                this.loadAccount();
+                this.loadContract();
+                //this._web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+                this._isWeb3Supported = true;
 
-        } else {
-            console.warn(
-                'Please use a dapp browser like mist or MetaMask plugin for chrome'
-            );
+            } else {
+                console.warn(
+                    'Please use a dapp browser like mist or MetaMask plugin for chrome'
+                );
+                this._isWeb3Supported = false;
+            }
+        } catch (e) {
+
         }
+    }
+
+    /**
+     *
+     */
+    public isWeb3Supported(): boolean {
+        return this._isWeb3Supported;
     }
 
     /**
      *
      * @returns {Observable<Detail>}
      */
-    createEntry(detail: Detail): string {
-        console.log(JSON.stringify(detail));
-        let val = this._tinyContract.addKvTx(JSON.stringify(detail)).send({from: this._account, gas: constants._standardGas});
-        console.log(val);
-        return "success";
+    async createEntry(detail: Detail): Promise<string> {
+        try {
+            let val = await this._tinyContract.addKvTx(JSON.stringify(detail)).send({from: this._account, gas: constants._standardGas});
+            return constants.done;
+        } catch (e) {
+            return null;
+        }
     }
 
-    async getEntry(): Promise<Detail> {
+    /**
+     *
+     * @param key
+     */
+    async getEntry(key: string): Promise<Detail> {
 
-        let contract: Tiny = await this.loadContract();
-        let val = await contract.getKv(this._account);
-        console.log(val);
-        let detail : Detail = JSON.parse(val);
-        return detail;
+        try {
+            let contract: Tiny = await this.loadContract();
+            //let val = await contract.getKv(this._account);
+            let val = await contract.getKv(key);
+
+            if(val === null || val === undefined || val === '')
+                return null;
+
+            let detail : Detail = JSON.parse(val);
+            return detail;
+        } catch (e) {
+            return null;
+        }
     }
 
 
@@ -109,5 +137,4 @@ export class WebService {
     private setApiVersion(): void {
         this._apiVersion = this._web3.version.api;
     }
-
 }

@@ -7,6 +7,7 @@ import {CoinDetail} from "../models/coin-detail";
 import {CCDetail} from "../models/cc-detail";
 import {Title} from "@angular/platform-browser";
 import {WebService} from "../services/web.service";
+import {constants} from "../constants";
 
 declare const $:any;
 @Component({
@@ -21,7 +22,6 @@ export class TinybitCreateComponent implements OnInit{
     errorMsg: string = '';
     coinDetails: CoinDetail[] = [];
     ccDetails: CCDetail[];
-    maxNumberOfAddresses: number = 5;
 
     constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title, private webService: WebService){
         route.params.subscribe(val => {
@@ -54,14 +54,14 @@ export class TinybitCreateComponent implements OnInit{
         // reset errors
         this.errorMsg = '';
 
-        if(this.coinDetails.length >= this.maxNumberOfAddresses) {
-            this.errorMsg = 'Sorry. The maximum number of addresses that can be saved are 5';
+        if(this.coinDetails.length >= constants._maxLength) {
+            this.errorMsg = constants._maxLengthError;
             return;
         }
 
         let coinDetail1 = new CoinDetail();
-        coinDetail1.name = 'BTC';
-        coinDetail1.symbol = 'BTC';
+        coinDetail1.name = constants.BTC;
+        coinDetail1.symbol = constants.BTC;
         coinDetail1.alias = '';
         this.coinDetails.push(coinDetail1);
         this.coinChanged(coinDetail1.symbol,this.coinDetails.length - 1);
@@ -87,7 +87,7 @@ export class TinybitCreateComponent implements OnInit{
         this.errorMsg = '';
 
         if(symbol == null) {
-            this.errorMsg = 'Sorry. The selected coin cannot be saved';
+            this.errorMsg = constants._unableToSaveError;
             return;
         }
 
@@ -103,13 +103,16 @@ export class TinybitCreateComponent implements OnInit{
      * validate and create url
      */
     createUrl(): void {
-
-        console.log('started..');
         if(this.validate()) {
             this.detail.coinDetails = this.coinDetails;
-            this.webService.createEntry(this.detail);
+            let val = this.webService.createEntry(this.detail);
+
+            val.then(result => {
+                if(result === null || result === undefined)
+                    this.errorMsg = constants._unableToCompleteTransaction;
+            })
+
         }
-        console.log('ended..');
     }
 
     /**
@@ -120,20 +123,14 @@ export class TinybitCreateComponent implements OnInit{
         this.ccDetails = ccDetails;
         // default row
         let coinDetail1 = new CoinDetail();
-        coinDetail1.name = 'BTC';
-        coinDetail1.symbol = 'BTC';
+        coinDetail1.name = constants.BTC;
+        coinDetail1.symbol = constants.BTC;
         coinDetail1.alias = '';
         coinDetail1.walletAddress = '';
         this.coinDetails.push(coinDetail1);
 
         this.coinChanged('BTC',this.coinDetails.length - 1);
         }
-
-    extractCreateUrl(detail: Detail): void {
-
-        let key = detail.key;
-        this.router.navigate([key]);
-    }
 
     /**
      * validate before submit
@@ -144,17 +141,17 @@ export class TinybitCreateComponent implements OnInit{
         this.errorMsg = '';
 
         if(this.detail == null || this.detail.name === '') {
-            this.errorMsg = 'Please add a name';
+            this.errorMsg = constants._missingNameError;
             return false;
         }
 
         if(this.coinDetails == null || this.coinDetails.length == 0) {
-            this.errorMsg = 'Please add at least one address';
+            this.errorMsg = constants._missingAddressError;
             return false;
         }
 
-        if(this.coinDetails.length > this.maxNumberOfAddresses) {
-            this.errorMsg = 'This is more than I can chew';
+        if(this.coinDetails.length > constants._maxLength) {
+            this.errorMsg = constants._maxLengthExceededError;
             return false;
         }
 
@@ -162,12 +159,12 @@ export class TinybitCreateComponent implements OnInit{
 
             if(e == null || e.name == null || e.name === '' || e.symbol == null || e.symbol === '' || e.walletAddress == null
             || e.walletAddress === '') {
-                this.errorMsg = 'Please complete all the details';
+                this.errorMsg = constants._missingDetailsError;
                 return false;
             }
 
             if(e.walletAddress == null || e.walletAddress === '' || e.walletAddress.indexOf(' ') > 0) {
-                this.errorMsg = 'Please correct the wallet address';
+                this.errorMsg = constants._incorrectWalletError;
                 return false;
             }
         });

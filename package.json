@@ -28,7 +28,6 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.3",
     "cryptocurrencies": "^1.1.1",
-    "hashids": "^1.1.4",
     "install": "^0.10.2",
     "ng2-bootstrap": "^1.6.3",
     "ng2-charts": "^1.6.0",

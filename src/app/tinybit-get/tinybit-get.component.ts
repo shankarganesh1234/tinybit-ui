@@ -5,9 +5,6 @@ import {Detail} from "../models/detail";
 import {Title} from "@angular/platform-browser";
 import {WebService} from "../services/web.service";
 
-
-declare const $: any;
-
 @Component({
     selector: 'tinybit-create',
     templateUrl: `./tinybit-get.component.html`
@@ -15,7 +12,7 @@ declare const $: any;
 
 export class TinybitGetComponent implements OnInit {
 
-    key: String;
+    key: string;
     detail: Detail = new Detail();
     error: boolean = false;
 
@@ -25,8 +22,9 @@ export class TinybitGetComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(val => {
+            this.error = false;
             this.key = val['key'];
-            this.getUrl();
+            this.getUrl(this.key);
         });
         this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
     }
@@ -34,21 +32,14 @@ export class TinybitGetComponent implements OnInit {
     /**
      * validate and create url
      */
-    getUrl(): void {
+    getUrl(key: string): void {
 
-        let detail: Detail;
-        this.webService.getEntry().then(result => {
-            console.log(result);
-            detail = result;
+        this.webService.getEntry(key).then(result => {
+            if(result === null || result === undefined)
+                this.error = true;
+            else
+                this.detail = result;
         });
-    }
-
-    extractCreateUrl(detail: Detail): void {
-        this.detail = detail;
-    }
-
-    extractError(error: any): void {
-        this.error = true;
     }
 
     /**
