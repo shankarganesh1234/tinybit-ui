@@ -46,7 +46,7 @@ export class TinybitGetComponent implements OnInit {
      *
      * @param id
      */
-    copyToCLipboard(id): void {
+    copyToClipboard(id): void {
 
         let el = document.getElementById(id) as HTMLInputElement;
         el.select();
