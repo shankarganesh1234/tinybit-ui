@@ -20,6 +20,7 @@ export class TinybitCreateComponent implements OnInit{
 
     detail: Detail = new Detail();
     errorMsg: string = '';
+    successMsg: string = constants._checkMetamask;
     coinDetails: CoinDetail[] = [];
     ccDetails: CCDetail[];
 
@@ -74,6 +75,7 @@ export class TinybitCreateComponent implements OnInit{
     deleteRow(index: number): void {
         // reset errors
         this.errorMsg = '';
+
         this.coinDetails.splice(index, 1);
     }
 
@@ -111,7 +113,6 @@ export class TinybitCreateComponent implements OnInit{
                 if(result === null || result === undefined)
                     this.errorMsg = constants._unableToCompleteTransaction;
             })
-
         }
     }
 

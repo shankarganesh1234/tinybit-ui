@@ -12,5 +12,6 @@ export const constants = {
     _missingDetailsError: "Please complete all the details",
     _incorrectWalletError: "Please correct the wallet address",
     _unableToCompleteTransaction: "Could not complete the requested operation. Is web3 supported ?",
+    _checkMetamask: "After clicking the button, check the cost and confirm the transaction in the metamask/mist window. Once confirmed, your page will be available at https://tinybit.link/[your eth address here]",
     BTC: "BTC"
 };
