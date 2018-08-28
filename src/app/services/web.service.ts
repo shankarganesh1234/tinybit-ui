@@ -58,6 +58,12 @@ export class WebService {
     /**
      *
      */
+    public getCurrentAccount(): string {
+        return this._account;
+    }
+    /**
+     *
+     */
     public isWeb3Supported(): boolean {
         return this._isWeb3Supported;
     }

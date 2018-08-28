@@ -3,7 +3,7 @@ export const constants = {
     _standardGas: 500000,
     done: "done",
     _contractAddress: "0x708Cb791668E08D1763AbE1010180e949C6D057A",
-    _maxLength: 5,
+    _maxLength: 30,
     _maxLengthError: "Sorry. The maximum number of addresses that can be saved are 5",
     _unableToSaveError: "Sorry. The selected coin cannot be saved",
     _missingNameError: "Please add a name",
@@ -12,6 +12,6 @@ export const constants = {
     _missingDetailsError: "Please complete all the details",
     _incorrectWalletError: "Please correct the wallet address",
     _unableToCompleteTransaction: "Could not complete the requested operation. Is web3 supported ?",
-    _checkMetamask: "After clicking the button, check the cost and confirm the transaction in the metamask/mist window. Once confirmed, your page will be available at https://tinybit.link/[your eth address here]",
+    _checkMetamask: "After clicking the button, please check the cost and confirm the transaction in the metamask/mist window for submission to the blockchain",
     BTC: "BTC"
 };

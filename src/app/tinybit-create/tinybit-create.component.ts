@@ -112,6 +112,8 @@ export class TinybitCreateComponent implements OnInit{
             val.then(result => {
                 if(result === null || result === undefined)
                     this.errorMsg = constants._unableToCompleteTransaction;
+                else
+                    this.router.navigate([this.webService.getCurrentAccount()])
             })
         }
     }
