@@ -1,6 +1,6 @@
 <br/><br/>
 
-<div *ngIf="error" class="container h-100">
+<div *ngIf="error" class="container">
     <div class="row h-100 justify-content-center align-items-center">
         <h1>
             <i class="far fa-sad-tear fa-4x tinybit-heading-color"></i>
@@ -10,6 +10,7 @@
         <h1 class="tinybit-heading-color">
            Whoops! I couldn't find what you requested.
         </h1>
+        <span>In case you just created your url, please wait for the transaction to get confirmed and try again.</span>
     </div>
 </div>
 <div *ngIf="!error" class="container">
@@ -20,22 +21,17 @@
     </div>
 
     <div *ngIf="detail" class="container table-responsive">
-        <table class="table table-sm table-responsive">
+        <table class="table">
             <thead>
-            <th scope="col" class="image-container-width"></th>
-            <th scope="col" class="coin-container-width"><b>Coin</b></th>
-            <th scope="col" class="alias-container-width">Alias</th>
-            <th scope="col" class="address-container-width">Address</th>
+            <th scope="col"><b>Coin</b></th>
+            <th scope="col">Alias</th>
+            <th scope="col">Address</th>
             </thead>
             <tbody>
             <ng-container *ngFor="let item of detail.coinDetails;let j=index">
                 <tr>
-                    <td>
-                        <img class="img-fluid img-rounded" src="{{item.imageUrl}}"/>
-                    </td>
                     <td class="align-middle">
-                        {{item.name}}
-                        <small>({{item.symbol}})</small>
+                        <small>{{item.symbol}}</small>
                     </td>
                     <td class="align-middle">
                         {{item.alias}}

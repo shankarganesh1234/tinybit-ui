@@ -59,17 +59,14 @@ html,body {
     line-height: 60px;
 }
 
-.image-container-width {
-    width: 4%;
-}
 .coin-container-width {
-    width: 19%;
+    width: 15%;
 }
 .alias-container-width {
     width: 25%
 }
 .address-container-width {
-    width: 52%;
+    width: 60%;
 }
 
 .form-control::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

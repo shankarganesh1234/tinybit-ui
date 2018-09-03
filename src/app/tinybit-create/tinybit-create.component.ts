@@ -61,7 +61,7 @@ export class TinybitCreateComponent implements OnInit{
         }
 
         let coinDetail1 = new CoinDetail();
-        coinDetail1.name = constants.BTC;
+        //coinDetail1.name = constants.BTC;
         coinDetail1.symbol = constants.BTC;
         coinDetail1.alias = '';
         this.coinDetails.push(coinDetail1);
@@ -97,8 +97,8 @@ export class TinybitCreateComponent implements OnInit{
             return e.symbol === symbol;
         });
 
-        this.coinDetails[index].name = temp.name;
-        this.coinDetails[index].imageUrl = temp.imageUrl;
+        //this.coinDetails[index].name = temp.name;
+        //this.coinDetails[index].imageUrl = temp.imageUrl;
     }
 
     /**
@@ -127,7 +127,7 @@ export class TinybitCreateComponent implements OnInit{
         this.ccDetails = ccDetails;
         // default row
         let coinDetail1 = new CoinDetail();
-        coinDetail1.name = constants.BTC;
+        //coinDetail1.name = constants.BTC;
         coinDetail1.symbol = constants.BTC;
         coinDetail1.alias = '';
         coinDetail1.walletAddress = '';
@@ -161,7 +161,7 @@ export class TinybitCreateComponent implements OnInit{
 
         this.coinDetails.forEach((e) => {
 
-            if(e == null || e.name == null || e.name === '' || e.symbol == null || e.symbol === '' || e.walletAddress == null
+            if(e == null || e.symbol == null || e.symbol === '' || e.walletAddress == null
             || e.walletAddress === '') {
                 this.errorMsg = constants._missingDetailsError;
                 return false;

@@ -10,24 +10,6 @@ export class Tiny extends TC.TypeChainContract {
   public constructor(web3: any, address: string | BigNumber) {
     const abi = [
       {
-        constant: true,
-        inputs: [{ name: "", type: "address" }],
-        name: "keyValues",
-        outputs: [{ name: "", type: "string" }],
-        payable: false,
-        stateMutability: "view",
-        type: "function"
-      },
-      {
-        constant: true,
-        inputs: [],
-        name: "key",
-        outputs: [{ name: "", type: "address" }],
-        payable: false,
-        stateMutability: "view",
-        type: "function"
-      },
-      {
         inputs: [],
         payable: false,
         stateMutability: "nonpayable",
@@ -38,8 +20,8 @@ export class Tiny extends TC.TypeChainContract {
         inputs: [{ name: "val", type: "string" }],
         name: "addKv",
         outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
+        payable: true,
+        stateMutability: "payable",
         type: "function"
       },
       {
@@ -49,6 +31,15 @@ export class Tiny extends TC.TypeChainContract {
         outputs: [{ name: "", type: "string" }],
         payable: false,
         stateMutability: "view",
+        type: "function"
+      },
+      {
+        constant: false,
+        inputs: [],
+        name: "withdraw",
+        outputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
         type: "function"
       }
     ];
@@ -70,21 +61,24 @@ export class Tiny extends TC.TypeChainContract {
     return contract;
   }
 
-  public get key(): Promise<string> {
-    return TC.promisify(this.rawWeb3Contract.key, []);
-  }
-
-  public keyValues(arg0: BigNumber | string): Promise<string> {
-    return TC.promisify(this.rawWeb3Contract.keyValues, [arg0.toString()]);
-  }
-
   public getKv(lookupKey: BigNumber | string): Promise<string> {
     return TC.promisify(this.rawWeb3Contract.getKv, [lookupKey.toString()]);
   }
 
-  public addKvTx(val: string): TC.DeferredTransactionWrapper<TC.ITxParams> {
-    return new TC.DeferredTransactionWrapper<TC.ITxParams>(this, "addKv", [
-      val.toString()
-    ]);
+  public addKvTx(
+    val: string
+  ): TC.DeferredTransactionWrapper<TC.IPayableTxParams> {
+    return new TC.DeferredTransactionWrapper<TC.IPayableTxParams>(
+      this,
+      "addKv",
+      [val.toString()]
+    );
+  }
+  public withdrawTx(): TC.DeferredTransactionWrapper<TC.ITxParams> {
+    return new TC.DeferredTransactionWrapper<TC.ITxParams>(
+      this,
+      "withdraw",
+      []
+    );
   }
 }

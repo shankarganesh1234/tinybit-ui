@@ -19,7 +19,6 @@ export class WebService {
     private _networkVersion: string = null;
     private _apiVersion: string = null;
     private _web3: any;
-    //private _tokenContractAddress: string = "0x4be27da0e3fca226bafa56c40bbd87df7b2214ae";
     private _tokenContractAddress: string = constants._contractAddress;
     private _tinyContract: Tiny = null;
     private _isWeb3Supported: boolean = false;
@@ -74,7 +73,7 @@ export class WebService {
      */
     async createEntry(detail: Detail): Promise<string> {
         try {
-            let val = await this._tinyContract.addKvTx(JSON.stringify(detail)).send({from: this._account, gas: constants._standardGas});
+            let val = await this._tinyContract.addKvTx(JSON.stringify(detail)).send({from: this._account, gas: constants._standardGas, value: constants._fee});
             return constants.done;
         } catch (e) {
             return null;
