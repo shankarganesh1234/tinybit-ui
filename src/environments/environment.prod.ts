@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+    production: true,
+    _ipfsHost: 'cryptorollcall.com',
+    _ipfsProtocol: 'https'
 };

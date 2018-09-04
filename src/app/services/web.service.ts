@@ -3,7 +3,7 @@ import "rxjs/add/operator/toPromise";
 // Import RxJs required methods
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import Web3 from 'web3';
+import * as Web3 from 'web3';
 import {Tiny} from "../contracts/Tiny"
 import {constants} from "../constants"
 import {Observable} from "rxjs";
@@ -30,7 +30,7 @@ export class WebService {
     /**
      * Set the network version
      */
-    private init(): void {
+    public init(): void {
         try {
             if (typeof window.web3 !== 'undefined') {
                 // Use Mist/MetaMask's provider
@@ -50,7 +50,7 @@ export class WebService {
                 this._isWeb3Supported = false;
             }
         } catch (e) {
-
+            console.log(e);
         }
     }
 

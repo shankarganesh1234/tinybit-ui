@@ -49,6 +49,8 @@ export class TinybitCreateComponent implements OnInit{
         this.coreService.getCurrencies().subscribe(
             result => this.extractCurrencies(result),
         );
+        this.webService.init();
+        this.ipfsService.bootstrapIPFS();
     }
 
     /**
@@ -65,7 +67,7 @@ export class TinybitCreateComponent implements OnInit{
         }
 
         let coinDetail1 = new CoinDetail();
-        //coinDetail1.name = constants.BTC;
+        coinDetail1.name = constants.bitcoin;
         coinDetail1.symbol = constants.BTC;
         coinDetail1.alias = '';
         this.coinDetails.push(coinDetail1);
@@ -101,8 +103,9 @@ export class TinybitCreateComponent implements OnInit{
             return e.symbol === symbol;
         });
 
-        //this.coinDetails[index].name = temp.name;
-        //this.coinDetails[index].imageUrl = temp.imageUrl;
+        this.coinDetails[index].name = temp.name;
+        this.coinDetails[index].imageUrl = temp.imageUrl;
+
     }
 
     /**
@@ -119,6 +122,12 @@ export class TinybitCreateComponent implements OnInit{
             }
 
             this.detail.coinDetails = this.coinDetails;
+
+            // set account and timestamp
+            this.detail.key = this.webService.getCurrentAccount();
+            this.detail.timestamp = new Date().toString();
+            // end
+
             const buf = Buffer.from(JSON.stringify(this.detail));
             console.log(buf.length);
 
@@ -137,8 +146,10 @@ export class TinybitCreateComponent implements OnInit{
                     val.then(result => {
                         if(result === null || result === undefined)
                             this.errorMsg = constants._unableToCompleteTransaction;
-                        else
+                        else {
+                            this.coreService.incrementCounter();
                             this.router.navigate([this.webService.getCurrentAccount()]);
+                        }
                     })
                 }
             });
@@ -194,6 +205,10 @@ export class TinybitCreateComponent implements OnInit{
             }
 
             if(e.walletAddress == null || e.walletAddress === '' || e.walletAddress.indexOf(' ') > 0) {
+                this.errorMsg = constants._incorrectWalletError;
+                return false;
+            }
+            if(e.walletAddress != null && e.walletAddress.length > 99) {
                 this.errorMsg = constants._incorrectWalletError;
                 return false;
             }

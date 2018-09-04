@@ -7,6 +7,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {CCDetails} from "../models/cc-details";
 import {CCDetail} from "../models/cc-detail";
+import {Counter} from "../models/counter";
 
 
 @Injectable()
@@ -29,6 +30,28 @@ export class CoreService {
      */
     getCurrencies(): Observable<CCDetail[]> {
         let baseUrl = "tinybitserver/cc";
+        return this.http
+            .get(baseUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     */
+    incrementCounter(): Observable<Counter> {
+        let baseUrl = "tinybitserver/add_count";
+        return this.http
+            .get(baseUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     */
+    getCounter(): Observable<Counter> {
+        let baseUrl = "tinybitserver/get_count";
         return this.http
             .get(baseUrl)
             .map(this.extractData)

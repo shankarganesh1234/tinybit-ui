@@ -18,8 +18,6 @@ export class TinybitGetComponent implements OnInit {
     key: string;
     detail: Detail = new Detail();
     error: boolean = false;
-    textDecoder: any = new TextDecoder("utf-8");
-
 
     constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private webService: WebService, private titleService: Title, private ipfsService: IPFSService) {
 
@@ -27,6 +25,9 @@ export class TinybitGetComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(val => {
+            this.webService.init();
+            this.ipfsService.bootstrapIPFS();
+
             this.error = false;
             this.key = val['key'];
             this.getUrl(this.key);
@@ -49,6 +50,7 @@ export class TinybitGetComponent implements OnInit {
                         console.log(err);
                         this.error = true;
                     } else {
+                        this.coreService.incrementCounter();
                         this.detail = JSON.parse(new TextDecoder("utf-8").decode(result[0].content));
                     }
                 });

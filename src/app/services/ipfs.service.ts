@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import IpfsApi from 'ipfs-api';
+import * as IpfsApi from 'ipfs-api';
+import {constants} from "../constants";
 
 declare let window: any;
 
@@ -8,11 +9,12 @@ export class IPFSService {
     ipfs: IpfsApi;
 
     constructor() {
-        window.addEventListener('load', (event) => {
             this.bootstrapIPFS();
-        });
     }
 
+    /**
+     * Check and init ipfs
+     */
     public bootstrapIPFS() {
         // Checking if IPFS has already been injected in the browser
         if (typeof window.ipfs !== 'undefined') {
@@ -20,7 +22,7 @@ export class IPFSService {
             console.log('IPFS API aready loaded');
         } else {
             // inject ipfs
-            this.ipfs = new IpfsApi({host: '127.0.0.1', port: '5001', protocol: 'http'});
+            this.ipfs = new IpfsApi({host: constants._ipfsHost, port: '5001', protocol: constants._ipfsProtocol});
         }
     }
 }

@@ -16,5 +16,10 @@ export const constants = {
     _ipfsFailure: "Unable to persist to ipfs",
     _checkMetamask: "After clicking the button, please check the cost and confirm the transaction in the metamask/mist window for submission to the blockchain",
     BTC: "BTC",
-    _fee: 1000000000000000
+    bitcoin: "Bitcoin",
+    _fee: 1000000000000000,
+    _ipfsHost: 'localhost',
+    _ipfsProtocol: 'http'
+    // _ipfsHost: 'tinybit.link',
+    // _ipfsProtocol: 'https'
 };

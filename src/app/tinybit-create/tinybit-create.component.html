@@ -8,10 +8,17 @@
             <div class="form-group">
                 <label for="tinybit-name">Name</label>
                 <input type="text" class="form-control" [(ngModel)]="detail.name" value="{{detail.name}}" id="tinybit-name" aria-describedby="emailHelp"
-                       placeholder="A name for my addresses" maxlength="100">
+                       placeholder="A name for my addresses" maxlength="40">
                 <small id="emailHelp" class="form-text text-muted">You can enter any name, to help identify that
                     this url belongs to you
                 </small>
+            </div>
+
+            <div class="form-group">
+                <label for="tinybit-name">Description</label>
+                <textarea class="form-control" [(ngModel)]="detail.description" value="{{detail.description}}" id="tinybit-description" aria-describedby="description"
+                       placeholder="Enter a custom description for this group of addresses" maxlength="100">
+                </textarea>
             </div>
         </div>
     </div>
