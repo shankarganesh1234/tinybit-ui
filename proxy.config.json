@@ -1,6 +1,6 @@
 {
   "/tinybitserver/*": {
-    "target": "http://localhost:8080/tinybit/",
+    "target": "http://localhost:8082/tinybit/",
     "pathRewrite": {
       "^/tinybitserver/": ""
     },

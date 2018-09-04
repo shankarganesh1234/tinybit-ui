@@ -10,6 +10,7 @@ import {CoreService} from "./services/core.service";
 import {TinybitCreateComponent} from "./tinybit-create/tinybit-create.component";
 import {TinybitGetComponent} from "./tinybit-get/tinybit-get.component";
 import {WebService} from "./services/web.service";
+import {IPFSService} from "./services/ipfs.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {WebService} from "./services/web.service";
     JsonpModule,
     ReactiveFormsModule
   ],
-  providers: [CoreService, WebService],
+  providers: [CoreService, WebService, IPFSService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })

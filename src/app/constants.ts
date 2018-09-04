@@ -12,6 +12,8 @@ export const constants = {
     _missingDetailsError: "Please complete all the details",
     _incorrectWalletError: "Please correct the wallet address",
     _unableToCompleteTransaction: "Could not complete the requested operation. Is web3 supported ?",
+    _ipfsError: "IPFS node unloaded or unreachable",
+    _ipfsFailure: "Unable to persist to ipfs",
     _checkMetamask: "After clicking the button, please check the cost and confirm the transaction in the metamask/mist window for submission to the blockchain",
     BTC: "BTC",
     _fee: 1000000000000000

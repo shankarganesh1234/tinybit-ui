@@ -71,9 +71,9 @@ export class WebService {
      *
      * @returns {Observable<Detail>}
      */
-    async createEntry(detail: Detail): Promise<string> {
+    async createEntry(detail: string): Promise<string> {
         try {
-            let val = await this._tinyContract.addKvTx(JSON.stringify(detail)).send({from: this._account, gas: constants._standardGas, value: constants._fee});
+            let val = await this._tinyContract.addKvTx(detail).send({from: this._account, gas: constants._standardGas, value: constants._fee});
             return constants.done;
         } catch (e) {
             return null;
@@ -84,7 +84,7 @@ export class WebService {
      *
      * @param key
      */
-    async getEntry(key: string): Promise<Detail> {
+    async getEntry(key: string): Promise<string> {
 
         try {
             let contract: Tiny = await this.loadContract();
@@ -94,8 +94,7 @@ export class WebService {
             if(val === null || val === undefined || val === '')
                 return null;
 
-            let detail : Detail = JSON.parse(val);
-            return detail;
+            return val;
         } catch (e) {
             return null;
         }

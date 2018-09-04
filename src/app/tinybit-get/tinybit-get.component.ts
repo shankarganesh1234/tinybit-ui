@@ -4,19 +4,24 @@ import {CoreService} from "../services/core.service";
 import {Detail} from "../models/detail";
 import {Title} from "@angular/platform-browser";
 import {WebService} from "../services/web.service";
+import {IPFSService} from "../services/ipfs.service";
+import {TextDecoder} from "text-encoding";
 
 @Component({
     selector: 'tinybit-create',
     templateUrl: `./tinybit-get.component.html`
 })
 
+
 export class TinybitGetComponent implements OnInit {
 
     key: string;
     detail: Detail = new Detail();
     error: boolean = false;
+    textDecoder: any = new TextDecoder("utf-8");
 
-    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private webService: WebService, private titleService: Title) {
+
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private webService: WebService, private titleService: Title, private ipfsService: IPFSService) {
 
     }
 
@@ -37,8 +42,17 @@ export class TinybitGetComponent implements OnInit {
         this.webService.getEntry(key).then(result => {
             if(result === null || result === undefined)
                 this.error = true;
-            else
-                this.detail = result;
+            else {
+                let hash: string = result;
+                this.ipfsService.ipfs.files.get(hash, (err, result) => {
+                    if(err) {
+                        console.log(err);
+                        this.error = true;
+                    } else {
+                        this.detail = JSON.parse(new TextDecoder("utf-8").decode(result[0].content));
+                    }
+                });
+            }
         });
     }
 

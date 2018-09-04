@@ -8,8 +8,12 @@ import {CCDetail} from "../models/cc-detail";
 import {Title} from "@angular/platform-browser";
 import {WebService} from "../services/web.service";
 import {constants} from "../constants";
+import {IPFSService} from "../services/ipfs.service";
+import {IpfsAddResponse} from "../models/ipfs-post";
 
 declare const $:any;
+declare const Buffer;
+
 @Component({
     selector: 'tinybit-create',
     templateUrl: `./tinybit-create.component.html`
@@ -24,7 +28,7 @@ export class TinybitCreateComponent implements OnInit{
     coinDetails: CoinDetail[] = [];
     ccDetails: CCDetail[];
 
-    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title, private webService: WebService){
+    constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title, private webService: WebService, private ipfsService: IPFSService){
         route.params.subscribe(val => {
             //this.init();
         });
@@ -103,19 +107,41 @@ export class TinybitCreateComponent implements OnInit{
 
     /**
      * validate and create url
+     * Ensure ipfs success and then start eth transaction
      */
     createUrl(): void {
-        if(this.validate()) {
-            this.detail.coinDetails = this.coinDetails;
-            let val = this.webService.createEntry(this.detail);
 
-            val.then(result => {
-                if(result === null || result === undefined)
-                    this.errorMsg = constants._unableToCompleteTransaction;
-                else {
-                    this.router.navigate([this.webService.getCurrentAccount()])
+        if(this.validate()) {
+
+            if(!this.ipfsService){
+                this.errorMsg = constants._ipfsError;
+                return;
+            }
+
+            this.detail.coinDetails = this.coinDetails;
+            const buf = Buffer.from(JSON.stringify(this.detail));
+            console.log(buf.length);
+
+            this.ipfsService.ipfs.files.add(buf, (err, result) => {
+
+                if(err) {
+                    this.errorMsg = constants._ipfsFailure;
+                    return;
+                } else {
+
+                    let ipfsResponse: IpfsAddResponse = new IpfsAddResponse();
+                    ipfsResponse.hash = result[0].hash;
+
+                    let val = this.webService.createEntry(ipfsResponse.hash);
+
+                    val.then(result => {
+                        if(result === null || result === undefined)
+                            this.errorMsg = constants._unableToCompleteTransaction;
+                        else
+                            this.router.navigate([this.webService.getCurrentAccount()]);
+                    })
                 }
-            })
+            });
         }
     }
 
