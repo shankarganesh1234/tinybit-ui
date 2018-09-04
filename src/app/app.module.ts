@@ -11,6 +11,7 @@ import {TinybitCreateComponent} from "./tinybit-create/tinybit-create.component"
 import {TinybitGetComponent} from "./tinybit-get/tinybit-get.component";
 import {WebService} from "./services/web.service";
 import {IPFSService} from "./services/ipfs.service";
+import {TinybitAboutComponent} from "./tinybit-about/tinybit-about.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {IPFSService} from "./services/ipfs.service";
       TinybitHomeComponent,
       TinybitFooterComponent,
       TinybitCreateComponent,
-      TinybitGetComponent
+      TinybitGetComponent,
+      TinybitAboutComponent
   ],
   imports: [BrowserModule,
     FormsModule,
