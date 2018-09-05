@@ -18,8 +18,8 @@ export const constants = {
     BTC: "BTC",
     bitcoin: "Bitcoin",
     _fee: 1000000000000000,
-    //_ipfsHost: 'localhost',
-    //_ipfsProtocol: 'http'
-     _ipfsHost: 'www.tinybit.link/tinybitipfs',
-     _ipfsProtocol: 'https'
+    _ipfsHost: 'localhost',
+    _ipfsProtocol: 'http'
+    // _ipfsHost: 'www.tinybit.link/tinybitipfs',
+    // _ipfsProtocol: 'https'
 };
