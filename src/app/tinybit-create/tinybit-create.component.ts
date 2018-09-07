@@ -49,7 +49,7 @@ export class TinybitCreateComponent implements OnInit{
         this.coreService.getCurrencies().subscribe(
             result => this.extractCurrencies(result),
         );
-        this.webService.init();
+        //this.webService.init();
         this.ipfsService.bootstrapIPFS();
     }
 
@@ -129,7 +129,6 @@ export class TinybitCreateComponent implements OnInit{
             // end
 
             const buf = Buffer.from(JSON.stringify(this.detail));
-            console.log(buf.length);
 
             this.ipfsService.ipfs.files.add(buf, (err, result) => {
 

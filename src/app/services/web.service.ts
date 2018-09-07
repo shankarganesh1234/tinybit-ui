@@ -24,7 +24,7 @@ export class WebService {
     private _isWeb3Supported: boolean = false;
 
     constructor() {
-        this.init()
+        this.init();
     }
 
     /**
@@ -35,6 +35,7 @@ export class WebService {
             if (typeof window.web3 !== 'undefined') {
                 // Use Mist/MetaMask's provider
                 // @ts-ignore
+
                 this._web3 = new Web3(window.web3.currentProvider);
                 this.setNetworkVersion();
                 this.setApiVersion();
@@ -57,14 +58,44 @@ export class WebService {
     /**
      *
      */
+    private isInitRequired(): boolean {
+
+        if (this._web3 == null || this._web3 === undefined
+            || this._networkVersion === null || this._networkVersion === undefined
+            || this._apiVersion == null || this._apiVersion === undefined
+            || this._account == null || this._account === undefined
+            || this._tinyContract == null || this._tinyContract === undefined)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     *
+     */
     public getCurrentAccount(): string {
         return this._account;
     }
+
     /**
      *
      */
     public isWeb3Supported(): boolean {
         return this._isWeb3Supported;
+    }
+
+    async withdraw(): Promise<string> {
+        try {
+
+            if(this.isInitRequired())
+                this.init();
+
+            let val = await this._tinyContract.withdrawTx().send({from: this._account, gas: constants._standardGas});
+            return constants.done;
+        } catch (e) {
+            console.log(e);
+            return null;
+        }
     }
 
     /**
@@ -73,7 +104,14 @@ export class WebService {
      */
     async createEntry(detail: string): Promise<string> {
         try {
-            let val = await this._tinyContract.addKvTx(detail).send({from: this._account, gas: constants._standardGas, value: constants._fee});
+            if(this.isInitRequired())
+                this.init();
+
+            let val = await this._tinyContract.addKvTx(detail).send({
+                from: this._account,
+                gas: constants._standardGas,
+                value: constants._fee
+            });
             return constants.done;
         } catch (e) {
             return null;
@@ -87,11 +125,14 @@ export class WebService {
     async getEntry(key: string): Promise<string> {
 
         try {
+            if(this.isInitRequired())
+                this.init();
+
             let contract: Tiny = await this.loadContract();
             //let val = await contract.getKv(this._account);
             let val = await contract.getKv(key);
 
-            if(val === null || val === undefined || val === '')
+            if (val === null || val === undefined || val === '')
                 return null;
 
             return val;

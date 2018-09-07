@@ -25,7 +25,7 @@ export class TinybitGetComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(val => {
-            this.webService.init();
+            //this.webService.init();
             this.ipfsService.bootstrapIPFS();
 
             this.error = false;

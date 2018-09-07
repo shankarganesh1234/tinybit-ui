@@ -2,7 +2,7 @@ export const constants = {
     _apiVersion: "0.20.7",
     _standardGas: 300000,
     done: "done",
-    _contractAddress: "0x88928355308f1eb435dce2266685ed00139237d3",
+    _contractAddress: "0x2ec7faf0bdaf1bc12bc8e060d7bb3306791068bd",
     _maxLength: 30,
     _maxLengthError: "Sorry. The maximum number of addresses that can be saved are 5",
     _unableToSaveError: "Sorry. The selected coin cannot be saved",
