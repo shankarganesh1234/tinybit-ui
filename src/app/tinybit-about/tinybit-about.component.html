@@ -1,59 +1,69 @@
 <br/>
 <div class="container h-100" id="welcomeMessage">
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
+
     <div class="row">
 
         <div class="text-center col-md-12 inline-headers">
-            <h5 class="tinybit-heading-color">Tinybit is a dapp which creates your unique url, linking your ethereum address
-            to all other crypto currencies you own</h5>
+            <h5 class="tinybit-heading-color">Tinybit is a dapp which creates a lookup between your Ethereum address with other crypto currency
+            addresses you own.</h5>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-5">
+            &nbsp;
+        </div>
+        <div class="col-md-2">
+            <img class="img-fluid" src="../../assets/img/ethkv.png"/>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="text-center col-md-12 inline-headers">
+            <h5 class="tinybit-heading-color">Click the <a [routerLink]="'/create'" title="Preview">
+                <small>Preview</small>
+            </a> link to see how it looks</h5>
+        </div>
+    </div>
+
+
+
     <br/><br/>
 
     <div class="row">
 
-        <div class="col-md-3 d-flex align-items-stretch">
-            <div class="card">
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-title tinybit-heading-color">Super simple <i class="fas fa-smile-beam"></i></h5>
+                    <h5 class="card-title tinybit-heading-color"></h5>
                     <strong class="card-text text-muted">
-                        Less than a minute to add your data to the blockchain
+                        Data storage through IPFS and Ethereum
                     </strong>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 d-flex align-items-stretch">
+        <div class="col-md-4 d-flex align-items-stretch">
 
-            <div class="card">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Anonymous <i class="fas fa-user-secret"></i></h5>
+                    <h5 class="card-title tinybit-heading-color"></h5>
                     <strong class="card-text text-muted">
-                        Your personal details are personal. No email or signup required.
+                        One url for as many as 30 addresses
                     </strong>
                 </div>
             </div>
 
         </div>
 
-        <div class="col-md-3 d-flex align-items-stretch">
+        <div class="col-md-4 d-flex align-items-stretch">
 
-            <div class="card">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Decentralized <i class="fab fa-codepen"></i></h5>
+                    <h5 class="card-title tinybit-heading-color"></h5>
                     <strong class="card-text text-muted">
-                        The data is stored on the Ethereum blockchain and is always available
-                    </strong>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 d-flex align-items-stretch">
-
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Immutable <i class="fas fa-lock"></i></h5>
-                    <strong class="card-text text-muted">
-                        Once created, no one else can modify your data
+                        Nominal fee of 1 finney to prevent spam
                     </strong>
                 </div>
             </div>

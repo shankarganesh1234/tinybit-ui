@@ -7,6 +7,7 @@ import {TinybitAboutComponent} from "./tinybit-about/tinybit-about.component";
 
 const routes: Routes = [
     {path: '', component: TinybitHomeComponent},
+    {path: 'about', component: TinybitAboutComponent},
     {path: 'create', component: TinybitCreateComponent},
     {path: ':key', component: TinybitGetComponent}
 ];

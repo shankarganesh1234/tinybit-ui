@@ -51,7 +51,7 @@ export class TinybitHomeComponent implements OnInit{
                     value: 50,
                 },
                 color: {
-                    value: '#000000'
+                    value: '#fd5c63'
                 },
                 shape: {
                     type: 'triangle',
