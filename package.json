@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^4.4.6",
     "@angular/router": "^4.4.6",
     "@types/numeral": "0.0.22",
+    "angular-particle": "^1.0.4",
     "angular2-image-upload": "^0.6.6",
     "bignumber.js": "^5.0.0",
     "bootstrap": "^3.3.7",

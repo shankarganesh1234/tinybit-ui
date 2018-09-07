@@ -8,9 +8,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="col-md-9">
-            <!--<a [routerLink]="'/about'" title="About">-->
-                <!--<small>About</small>-->
-            <!--</a>-->
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a [routerLink]="'/create'" title="Create">
+                        <small>Create</small>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a [routerLink]="'/create'" title="Create">
+                        <small>Preview</small>
+                    </a>
+                </li>
+            </ul>
         </div>
         <form class="form-inline my-2 my-lg-0">
             <input [(ngModel)]="search" class="form-control mr-sm-2" type="search" placeholder="ethereum address"

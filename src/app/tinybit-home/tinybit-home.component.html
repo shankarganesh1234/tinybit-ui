@@ -1,5 +1,7 @@
 <br/>
 <div class="container h-100" id="welcomeMessage">
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
+
     <div class="row">
 
         <div class="text-center col-md-12 inline-headers">
@@ -9,7 +11,7 @@
             </h2>
         </div>
     </div>
-    <div class="text-purple text-center">
+    <div class="text-purple text-center large-font">
         <strong>{{count.currentCount}}</strong> &nbsp;<small>requests served</small>
     </div>
     <br/>
@@ -26,9 +28,9 @@
     <div class="row">
 
         <div class="col-md-3 d-flex align-items-stretch">
-            <div class="card">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-title tinybit-heading-color">Super simple <i class="fas fa-smile-beam"></i></h5>
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Simple</h5>
                     <strong class="card-text text-muted">
                         Less than a minute to add your data to the blockchain
                     </strong>
@@ -40,9 +42,9 @@
 
         <div class="col-md-3 d-flex align-items-stretch">
 
-            <div class="card">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Anonymous <i class="fas fa-user-secret"></i></h5>
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Anonymous</h5>
                     <strong class="card-text text-muted">
                         Your personal details are personal. No email or signup required.
                     </strong>
@@ -53,9 +55,9 @@
 
         <div class="col-md-3 d-flex align-items-stretch">
 
-            <div class="card">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Decentralized <i class="fab fa-codepen"></i></h5>
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Decentralized</h5>
                     <strong class="card-text text-muted">
                         The data is stored on the Ethereum blockchain and is always available
                     </strong>
@@ -65,9 +67,9 @@
 
         <div class="col-md-3 d-flex align-items-stretch">
 
-            <div class="card">
+            <div class="card border-purple">
                 <div class="card-body text-center">
-                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Immutable <i class="fas fa-lock"></i></h5>
+                    <h5 class="card-subtitle mb-2 tinybit-heading-color">Immutable</h5>
                     <strong class="card-text text-muted">
                         Once created, no one else can modify your data
                     </strong>
@@ -80,7 +82,7 @@
 
     <div *ngIf="!isWeb3Supported" class="row">
         <div class="col-md-12 text-danger text-center">
-            <h3>Please use a dapp browser like <a href="https://github.com/ethereum/mist" target="_blank">Mist</a> or <a href="https://metamask.io/" target="_blank">MetaMask</a> plugin for chrome</h3>
+            <h4>Please use a dapp browser like <a href="https://github.com/ethereum/mist" target="_blank">Mist</a>, <a href="https://brave.com/" target="_blank">Brave</a>  or <a href="https://metamask.io/" target="_blank">MetaMask</a> plugin for chrome</h4>
         </div>
     </div>
 

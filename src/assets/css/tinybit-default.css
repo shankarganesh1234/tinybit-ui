@@ -83,3 +83,9 @@ html,body {
 .address-input-width {
     width: 80% !important;
 }
+.border-purple {
+    border-color: purple
+}
+.large-font {
+    font-size: larger
+}
