@@ -59,9 +59,9 @@ export class TinybitHomeComponent implements OnInit{
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: '#000000',
+                    color: '#fe4a49',
                     opacity: 0.4,
-                    width: 1
+                    width: 2
                 }
             }
     }}

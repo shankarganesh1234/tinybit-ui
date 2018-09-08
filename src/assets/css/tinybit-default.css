@@ -88,7 +88,7 @@ html,body {
 }
 
 .bg-color-red {
-    background-color: #F0F1EE;
+    background-color: #fe8a71;
     color: black;
     opacity: 0.9;
 }
@@ -103,7 +103,10 @@ html,body {
     opacity: 0.8;
 }
 .bg-color-dark {
-    background-color: #333332;
+    background-color: #3d1e6d;
     color: white;
     opacity: 0.8;
+}
+.bg-color-body {
+    background-color: #f4f4f8
 }
