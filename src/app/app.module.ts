@@ -5,7 +5,6 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {TinybitHomeComponent} from "./tinybit-home/tinybit-home.component";
-import {TinybitFooterComponent} from "./tinybit-footer/tinybit-footer.component";
 import {CoreService} from "./services/core.service";
 import {TinybitCreateComponent} from "./tinybit-create/tinybit-create.component";
 import {TinybitGetComponent} from "./tinybit-get/tinybit-get.component";
@@ -19,7 +18,6 @@ import {ParticlesModule} from 'angular-particle';
     declarations: [
         AppComponent,
         TinybitHomeComponent,
-        TinybitFooterComponent,
         TinybitCreateComponent,
         TinybitGetComponent,
         TinybitAboutComponent

@@ -108,6 +108,12 @@ export class TinybitCreateComponent implements OnInit{
 
     }
 
+    // withdraw(): void {
+    //     this.webService.withdraw().then(result => {
+    //       console.log(result);
+    //     })
+    // }
+
     /**
      * validate and create url
      * Ensure ipfs success and then start eth transaction

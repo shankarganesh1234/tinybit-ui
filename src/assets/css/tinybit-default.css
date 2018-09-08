@@ -83,9 +83,27 @@ html,body {
 .address-input-width {
     width: 80% !important;
 }
-.border-purple {
-    border-color: purple
-}
 .large-font {
     font-size: larger
+}
+
+.bg-color-red {
+    background-color: #F0F1EE;
+    color: black;
+    opacity: 0.9;
+}
+.bg-color-yellow {
+    background-color: #FFD464;
+    color: black;
+    opacity: 0.9;
+}
+.bg-color-blue {
+    background-color: #1352A2;
+    color: whitesmoke;
+    opacity: 0.8;
+}
+.bg-color-dark {
+    background-color: #333332;
+    color: white;
+    opacity: 0.8;
 }

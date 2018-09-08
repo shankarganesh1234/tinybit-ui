@@ -9,11 +9,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="col-md-9">
             <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a [routerLink]="'/about'" title="About">
-                        <small>About</small>
-                    </a>
-                </li>
+                <!--<li class="list-inline-item">-->
+                <!--<a [routerLink]="'/about'" title="About">-->
+                <!--<small>About</small>-->
+                <!--</a>-->
+                <!--</li>-->
                 <li class="list-inline-item">
                     <a [routerLink]="'/create'" title="Create">
                         <small>Create</small>
@@ -21,8 +21,17 @@
                 </li>
                 <li class="list-inline-item">
                     <a [routerLink]="'/create'" title="Preview">
-                        <small>Preview</small>
+                        <small>Showcase</small>
                     </a>
+                </li>
+                <li class="list-inline-item">
+                    <a [routerLink]="'/create'" title="Preview">
+                        <small>Donate</small>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="mailto:tinybit.link@gmail.com" target="_top">
+                        tinybit.link@gmail.com</a>
                 </li>
             </ul>
         </div>
@@ -35,5 +44,3 @@
 </nav>
 
 <router-outlet></router-outlet>
-
-<tinybit-footer></tinybit-footer>
