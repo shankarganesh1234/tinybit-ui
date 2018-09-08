@@ -1,6 +1,7 @@
 <br/><br/>
 
 <div *ngIf="error" class="container">
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
     <div class="row h-100 justify-content-center align-items-center">
         <h1>
             <i class="far fa-sad-tear fa-4x tinybit-heading-color"></i>
@@ -14,6 +15,7 @@
     </div>
 </div>
 <div *ngIf="!error" class="container">
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
     <div class="row">
         <div class="col-md-12">
             <i class="fas fa-key tinybit-heading-color"></i> &nbsp;<span class="text-muted">{{detail.key}}</span>

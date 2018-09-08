@@ -19,6 +19,11 @@ export class TinybitGetComponent implements OnInit {
     detail: Detail = new Detail();
     error: boolean = false;
 
+    myStyle: object = {};
+    myParams: object = {};
+    width: number = 100;
+    height: number = 100;
+
     constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private webService: WebService, private titleService: Title, private ipfsService: IPFSService) {
 
     }
@@ -33,6 +38,37 @@ export class TinybitGetComponent implements OnInit {
             this.getUrl(this.key);
         });
         this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
+
+        this.myStyle = {
+            'position': 'fixed',
+            'width': '100%',
+            'height': '100%',
+            'z-index': -1,
+            'top': 0,
+            'left': 0,
+            'right': 0,
+            'bottom': 0
+        };
+
+        this.myParams = {
+            particles: {
+                number: {
+                    value: 50,
+                },
+                color: {
+                    value: '#fd5c63'
+                },
+                shape: {
+                    type: 'triangle',
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#fe4a49',
+                    opacity: 0.4,
+                    width: 2
+                }
+            }}
     }
 
     /**
