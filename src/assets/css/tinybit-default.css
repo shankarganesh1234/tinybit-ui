@@ -90,22 +90,22 @@ html,body {
 .bg-color-red {
     background-color: #fe8a71;
     color: black;
-    opacity: 0.9;
+    opacity: 0.6;
 }
 .bg-color-yellow {
     background-color: #FFD464;
     color: black;
-    opacity: 0.9;
+    opacity: 0.6;
 }
 .bg-color-blue {
     background-color: #1352A2;
     color: whitesmoke;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .bg-color-dark {
-    background-color: #3d1e6d;
+    background-color: #000000;
     color: white;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .bg-color-body {
     background-color: #f4f4f8
