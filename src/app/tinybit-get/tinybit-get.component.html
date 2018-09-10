@@ -14,7 +14,7 @@
         <span>In case you just created your url, please wait for the transaction to get confirmed and hit refresh.</span>
     </div>
 </div>
-<div *ngIf="!error" class="container">
+<div *ngIf="!error && detail.name != null && detail.name != ''" class="container">
     <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
     <div class="row">
         <div class="col-md-12">
@@ -69,5 +69,17 @@
         </table>
 
     </div>
+</div>
+<div *ngIf="!error && (detail.name === null || detail.name === undefined || detail.name === '')" class="container">
+
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1 class="tinybit-heading-color">
+            Retrieving the details, please wait.
+        </h1>
+        <br/>
+        <div>For unconfirmed transactions, please wait for the transaction to get confirmed and then hit refresh.</div>
+    </div>
+
 </div>
 <div class="container h-50"></div>
