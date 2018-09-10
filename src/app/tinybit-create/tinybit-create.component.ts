@@ -39,6 +39,8 @@ export class TinybitCreateComponent implements OnInit{
         this.errorMsg = '';
         this.init();
         this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
+
+
     }
 
     /**
@@ -152,7 +154,7 @@ export class TinybitCreateComponent implements OnInit{
                         if(result === null || result === undefined)
                             this.errorMsg = constants._unableToCompleteTransaction;
                         else {
-                            this.coreService.incrementCounter();
+                            this.coreService.incrementCounter().subscribe(result => {});
                             this.router.navigate([this.webService.getCurrentAccount()]);
                         }
                     })
