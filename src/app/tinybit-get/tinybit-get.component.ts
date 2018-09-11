@@ -37,7 +37,7 @@ export class TinybitGetComponent implements OnInit {
             this.key = val['key'];
             this.getUrl(this.key);
         });
-        this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
+        this.titleService.setTitle('tinybit.link - One url for all your crypto currency wallet addresses');
 
         this.myStyle = {
             'position': 'fixed',

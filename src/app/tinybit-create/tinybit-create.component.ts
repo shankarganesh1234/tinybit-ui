@@ -38,7 +38,7 @@ export class TinybitCreateComponent implements OnInit{
         // reset errors
         this.errorMsg = '';
         this.init();
-        this.titleService.setTitle('tinybit.link - Tiny urls for all your crypto currency wallet addresses');
+        this.titleService.setTitle('tinybit.link - One url for all your crypto currency wallet addresses');
 
 
     }
