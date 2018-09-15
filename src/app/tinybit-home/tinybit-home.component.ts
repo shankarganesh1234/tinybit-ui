@@ -51,15 +51,15 @@ export class TinybitHomeComponent implements OnInit{
                     value: 50,
                 },
                 color: {
-                    value: '#fd5c63'
+                    value: '#FFDC00'
                 },
                 shape: {
-                    type: 'triangle',
+                    type: 'circle',
                 },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: '#fe4a49',
+                    color: '#FFDC00',
                     opacity: 0.4,
                     width: 2
                 }

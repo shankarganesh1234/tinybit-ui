@@ -9,11 +9,17 @@
     </div>
     <div class="row h-100 justify-content-center align-items-center">
         <h1 class="tinybit-heading-color">
-           Whoops! I couldn't find what you requested.
+           Oops! I couldn't find what you requested.
         </h1>
+        <div *ngIf="!isWeb3Supported" class="container">
+            <div class="row h-100 justify-content-center align-items-center">
+                <h4 class="tinybit-heading-color">Please use a dapp browser like <a href="https://github.com/ethereum/mist" target="_blank">Mist</a>, <a href="https://brave.com/" target="_blank">Brave</a>  or <a href="https://metamask.io/" target="_blank">MetaMask</a> plugin for chrome</h4>
+            </div>
+        </div>
         <span>In case you just created your url, please wait for the transaction to get confirmed and hit refresh.</span>
     </div>
 </div>
+
 <div *ngIf="!error && detail.name != null && detail.name != ''" class="container">
     <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
     <div class="row">

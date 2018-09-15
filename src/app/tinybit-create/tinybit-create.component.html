@@ -1,5 +1,18 @@
 <br/><br/>
-<div class="container">
+
+<div *ngIf="!isWeb3Supported" class="container">
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1>
+            <i class="far fa-sad-tear fa-4x tinybit-heading-color"></i>
+        </h1>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+                <h4 class="tinybit-heading-color">Please use a dapp browser like <a href="https://github.com/ethereum/mist" target="_blank">Mist</a>, <a href="https://brave.com/" target="_blank">Brave</a>  or <a href="https://metamask.io/" target="_blank">MetaMask</a> plugin for chrome</h4>
+    </div>
+</div>
+
+<div class="container" *ngIf="isWeb3Supported">
     <h1 class="tinybit-heading-color"> Create my space</h1>
 
     <div class="row">

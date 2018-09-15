@@ -18,6 +18,7 @@ export class TinybitGetComponent implements OnInit {
     key: string;
     detail: Detail = new Detail();
     error: boolean = false;
+    isWeb3Supported: boolean  = false;
 
     myStyle: object = {};
     myParams: object = {};
@@ -29,6 +30,8 @@ export class TinybitGetComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.isWeb3Supported = this.webService.isWeb3Supported();
+
         this.route.params.subscribe(val => {
             //this.webService.init();
             this.ipfsService.bootstrapIPFS();
@@ -37,7 +40,7 @@ export class TinybitGetComponent implements OnInit {
             this.key = val['key'];
             this.getUrl(this.key);
         });
-        this.titleService.setTitle('tinybit.link - One url for all your crypto currency wallet addresses');
+        this.titleService.setTitle('tinybit.link - key value store for crypto addresses');
 
         this.myStyle = {
             'position': 'fixed',
@@ -56,15 +59,15 @@ export class TinybitGetComponent implements OnInit {
                     value: 50,
                 },
                 color: {
-                    value: '#fd5c63'
+                    value: '#FFDC00'
                 },
                 shape: {
-                    type: 'triangle',
+                    type: 'circle',
                 },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: '#fe4a49',
+                    color: '#FFDC00',
                     opacity: 0.4,
                     width: 2
                 }

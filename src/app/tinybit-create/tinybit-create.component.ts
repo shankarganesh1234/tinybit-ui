@@ -27,6 +27,12 @@ export class TinybitCreateComponent implements OnInit{
     successMsg: string = constants._checkMetamask;
     coinDetails: CoinDetail[] = [];
     ccDetails: CCDetail[];
+    isWeb3Supported: boolean  = false;
+
+    myStyle: object = {};
+    myParams: object = {};
+    width: number = 100;
+    height: number = 100;
 
     constructor(private route: ActivatedRoute, private router: Router, private coreService: CoreService, private titleService: Title, private webService: WebService, private ipfsService: IPFSService){
         route.params.subscribe(val => {
@@ -35,12 +41,42 @@ export class TinybitCreateComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        this.isWeb3Supported = this.webService.isWeb3Supported();
         // reset errors
         this.errorMsg = '';
         this.init();
-        this.titleService.setTitle('tinybit.link - One url for all your crypto currency wallet addresses');
+        this.titleService.setTitle('tinybit.link - key value store for crypto addresses');
 
+        this.myStyle = {
+            'position': 'fixed',
+            'width': '100%',
+            'height': '100%',
+            'z-index': -1,
+            'top': 0,
+            'left': 0,
+            'right': 0,
+            'bottom': 0
+        };
 
+        this.myParams = {
+            particles: {
+                number: {
+                    value: 50,
+                },
+                color: {
+                    value: '#FFDC00'
+                },
+                shape: {
+                    type: 'circle',
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#FFDC00',
+                    opacity: 0.4,
+                    width: 2
+                }
+            }}
     }
 
     /**
